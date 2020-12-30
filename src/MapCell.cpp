@@ -5,7 +5,7 @@ MapCell::MapCell(){
 }
 
 bool MapCell::isBlocked(){
-  if(id == '1'){
+  if(id ==  '#'){
     return true;
   }
 

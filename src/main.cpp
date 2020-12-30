@@ -17,8 +17,15 @@ int main()
   win = initscr();
   keypad(win, TRUE);
   printw("Welcome to maze\n");
-
+  cbreak();
+  noecho();
+  
+ 
   refresh();
+
+  start_color();
+  map.initColorPair();
+
 
   while (gameOver == false){
     player.callInput();
