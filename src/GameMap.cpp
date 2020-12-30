@@ -23,13 +23,18 @@ void GameMap::draw(){
   refresh();
 }
 
-void GameMap::setPlayerCell(int px, int py){
-  if(playerCell != NULL){
-    playerCell->id = ' ';
+bool GameMap::setPlayerCell(int px, int py){
+  if(cells[py][px].isBlocked() == false){
+    if(playerCell != NULL){
+      playerCell->id = ' ';
+    }
+
+    playerCell = &cells[py][px];
+    playerCell->id = 'p';
+    return true;
   }
 
-  playerCell = &cells[py][px];
-  playerCell->id = 'p';
+  return false;
 }
 
 void GameMap::loadMapFromFile(){

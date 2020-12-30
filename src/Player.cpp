@@ -12,6 +12,10 @@ Player::Player(){
 void Player::callInput(){
   int userInput = getch();
 
+  //asign las coords
+  lastX = x;
+  lastY = y;
+
   switch (userInput){
     case 'w':
       y--;
@@ -30,4 +34,9 @@ void Player::callInput(){
       break;
   }
   refresh();
+}
+
+void Player::resetToLastPosition(){
+  x = lastX;
+  y = lastY;
 }

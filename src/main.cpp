@@ -12,7 +12,7 @@ int main()
 {
   bool gameOver = false;
   GameMap map;
-  Player mainPlayer;
+  Player player;
 
   win = initscr();
   keypad(win, TRUE);
@@ -21,8 +21,11 @@ int main()
   refresh();
 
   while (gameOver == false){
-    mainPlayer.callInput();
-    map.setPlayerCell(mainPlayer.x, mainPlayer.y);
+    player.callInput();
+    if(!map.setPlayerCell(player.x, player.y)){
+      player.resetToLastPosition();
+    };
+
     map.draw();
   }
   

@@ -10,7 +10,7 @@ class GameMap {
     void draw();
 
     // gets players coords an update the map
-    void setPlayerCell(int px, int py);
+    bool setPlayerCell(int px, int py);
 
     // pointer for player
     MapCell* playerCell;

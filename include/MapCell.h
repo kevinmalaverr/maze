@@ -5,6 +5,7 @@ class MapCell{
   public:
     MapCell();
     char id;
+    bool isBlocked();
 };
 
 #endif
