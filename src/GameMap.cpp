@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include "MapCell.h"
 
 using namespace std;
 
@@ -13,39 +14,32 @@ GameMap::GameMap(){
 }
 
 void GameMap::initColorPair(){
-  init_pair(VOID_PAIR, COLOR_BLACK, COLOR_BLACK);
-  init_pair(WALL_PAIR, COLOR_YELLOW, COLOR_BLACK);
-  init_pair(PLAYER_PAIR, COLOR_WHITE, COLOR_BLACK);
+  init_pair(0, COLOR_BLACK, COLOR_BLACK);
+  init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+  init_pair(2, COLOR_RED, COLOR_BLACK);
 } 
 
 void GameMap::draw(){
   clear();
 
-  char id;
-  short color;
-
   for(int y = 0; y < 15; y++){
     for(int x = 0; x < 10; x++){
-      id = cells[y][x].id;
-      color = colorMap.at(id);
-
-      attron(COLOR_PAIR(color));
-      printw("%c", id);
-      attroff(COLOR_PAIR(color));
+      attron(COLOR_PAIR(cells[y][x].drawColor));
+      printw("%c", cells[y][x].drawChar);
+      attroff(COLOR_PAIR(cells[y][x].drawColor));
     }
     printw("\n");
   }
-  
 }
  
 bool GameMap::setPlayerCell(int px, int py){
   if(cells[py][px].isBlocked() == false){
     if(playerCell != NULL){
-      playerCell->id = 'b';
+      playerCell->setId('b');
     }
 
     playerCell = &cells[py][px];
-    playerCell->id = '0';
+    playerCell->setId('p');
     return true;
   }
 
@@ -60,7 +54,7 @@ void GameMap::loadMapFromFile(){
   if(file.is_open()){
     while (getline(file, line)){
       for (int i = 0; i < line.length(); i++){
-        cells[row][i].id = line[i];
+        cells[row][i].setId(line[i]);
       }
       row++;
     }

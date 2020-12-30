@@ -10,7 +10,6 @@ class Player
     int x, y;
     int lastX, lastY;
 
-  
   protected:
 };
 
