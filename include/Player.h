@@ -6,9 +6,9 @@ class Player
   public:
     Player();
     void callInput();
+    int x, y;
   
   protected:
-    int x, y;
 };
 
 #endif

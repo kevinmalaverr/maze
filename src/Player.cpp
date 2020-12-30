@@ -14,20 +14,16 @@ void Player::callInput(){
 
   switch (userInput){
     case 'w':
-      y++;
-      printw("UP\n");
+      y--;
       break;
     case 's':
-      y--;
-      printw("down\n");
+      y++;
       break;
     case 'a':
       x--;
-      printw("left\n");
       break;
     case 'd':
       x++;
-      printw("right\n");
       break;
     
     default:

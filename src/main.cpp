@@ -22,7 +22,7 @@ int main()
 
   while (gameOver == false){
     mainPlayer.callInput();
-    clear();
+    map.setPlayerCell(mainPlayer.x, mainPlayer.y);
     map.draw();
   }
   
