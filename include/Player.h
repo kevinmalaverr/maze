@@ -9,7 +9,6 @@ class Player
   
   protected:
     int x, y;
-
 };
 
 #endif
